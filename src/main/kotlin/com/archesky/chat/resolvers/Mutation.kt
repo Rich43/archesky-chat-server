@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class Mutation(private val mutationService: MutationService): GraphQLMutationResolver {
-    fun createMessage(chat: String, environment: DataFetchingEnvironment): Message {
-        return mutationService.createMessage(chat)
+    fun createMessage(message: String, environment: DataFetchingEnvironment): Message {
+        return mutationService.createMessage(message)
     }
 }
