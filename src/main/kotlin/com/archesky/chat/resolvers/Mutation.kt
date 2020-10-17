@@ -11,12 +11,4 @@ class Mutation(private val mutationService: MutationService): GraphQLMutationRes
     fun createMessage(chat: String, environment: DataFetchingEnvironment): Message {
         return mutationService.createMessage(chat)
     }
-
-    fun updateMessage(id: String, chat: String, environment: DataFetchingEnvironment): Message? {
-        return mutationService.updateMessage(id, chat)
-    }
-
-    fun deleteMessage(id: String, environment: DataFetchingEnvironment): Boolean {
-        return mutationService.deleteMessage(id)
-    }
 }
