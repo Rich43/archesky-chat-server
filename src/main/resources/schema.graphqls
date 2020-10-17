@@ -7,7 +7,7 @@ type Mutation {
 }
 
 type Subscription {
-    updateMessage(id: ID!): Message
+    updateMessage: Message
 }
 
 type Message {
