@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-    createChat(chat: String!): Message!
+    createMessage(message: String!): Message!
 }
 
 type Subscription {
