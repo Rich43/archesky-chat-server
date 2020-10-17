@@ -1,28 +1,28 @@
-package com.archesky.content.service
+package com.archesky.chat.service
 
-import com.archesky.content.dto.Content
-import com.archesky.content.repository.ContentRepository
+import com.archesky.chat.dto.Chat
+import com.archesky.chat.repository.ChatRepository
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 
 @Service
-class MutationService(private val repository: ContentRepository,
-                      private val contentQueueService: ContentQueueService) {
-    @PreAuthorize("hasAuthority('archesky.create_content')")
-    fun createContent(content: String): Content {
-        return repository.createContent(content)
+class MutationService(private val repository: ChatRepository,
+                      private val chatQueueService: ChatQueueService) {
+    @PreAuthorize("hasAuthority('archesky.create_chat')")
+    fun createChat(chat: String): Chat {
+        return repository.createChat(chat)
     }
 
-    @PreAuthorize("hasAuthority('archesky.update_content')")
-    fun updateContent(id: String, content: String): Content? {
-        val result = repository.updateContentById(id, content)
-        contentQueueService.push(result)
+    @PreAuthorize("hasAuthority('archesky.update_chat')")
+    fun updateChat(id: String, chat: String): Chat? {
+        val result = repository.updateChatById(id, chat)
+        chatQueueService.push(result)
         return result
     }
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
-    fun deleteContent(id: String): Boolean {
-        repository.deleteContentById(id)
+    @PreAuthorize("hasAuthority('archesky.delete_chat')")
+    fun deleteChat(id: String): Boolean {
+        repository.deleteChatById(id)
         return true
     }
 }

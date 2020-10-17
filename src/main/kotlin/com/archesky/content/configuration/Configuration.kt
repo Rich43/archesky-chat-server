@@ -1,4 +1,4 @@
-package com.archesky.content.configuration
+package com.archesky.chat.configuration
 
 import com.arangodb.ArangoDB.Builder
 import com.arangodb.springframework.annotation.EnableArangoRepositories
@@ -6,7 +6,7 @@ import com.arangodb.springframework.config.ArangoConfiguration
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-@EnableArangoRepositories(basePackages = ["com.archesky.content"])
+@EnableArangoRepositories(basePackages = ["com.archesky.chat"])
 class Configuration(val applicationProperties: ApplicationProperties) : ArangoConfiguration {
     override fun arango(): Builder {
         return Builder()

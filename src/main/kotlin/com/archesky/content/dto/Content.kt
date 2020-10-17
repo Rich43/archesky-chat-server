@@ -1,11 +1,11 @@
-package com.archesky.content.dto
+package com.archesky.chat.dto
 
 import com.arangodb.springframework.annotation.Document
 import org.springframework.data.annotation.Id
 
-const val CONTENT = "content"
+const val CONTENT = "chat"
 @Document(CONTENT)
-data class Content (
+data class Chat (
     @Id var id: String? = null,
-    var content: String? = null
+    var chat: String? = null
 )

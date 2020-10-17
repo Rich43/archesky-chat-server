@@ -1,13 +1,13 @@
-package com.archesky.content.resolvers
+package com.archesky.chat.resolvers
 
-import com.archesky.content.dto.Content
-import com.archesky.content.repository.ContentRepository
+import com.archesky.chat.dto.Chat
+import com.archesky.chat.repository.ChatRepository
 import graphql.kickstart.tools.GraphQLQueryResolver
 import org.springframework.stereotype.Component
 
 @Component
-class Query(private val repository: ContentRepository): GraphQLQueryResolver {
-    fun listContent(): MutableIterable<Content> {
+class Query(private val repository: ChatRepository): GraphQLQueryResolver {
+    fun listChat(): MutableIterable<Chat> {
         return repository.findAll()
     }
 }

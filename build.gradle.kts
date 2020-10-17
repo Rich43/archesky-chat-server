@@ -19,24 +19,6 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	jcenter()
-	maven("https://maven.pkg.github.com/Rich43/archesky-auth-library") {
-		credentials {
-			username = "Rich43"
-			password = getenv()["GITHUB_TOKEN"]
-		}
-	}
-	maven("https://maven.pkg.github.com/Rich43/archesky-ssl-library") {
-		credentials {
-			username = "Rich43"
-			password = getenv()["GITHUB_TOKEN"]
-		}
-	}
-	maven("https://maven.pkg.github.com/Rich43/archesky-apollo-library") {
-		credentials {
-        		username = "Rich43"
-        		password = getenv()["GITHUB_TOKEN"]
-        	}
-	}
 	mavenCentral()
 }
 
@@ -52,8 +34,6 @@ dependencies {
 	implementation("com.graphql-java-kickstart:graphql-kickstart-spring-boot-starter-tools:7.1.0")
 	implementation("com.arangodb:arangodb-java-driver:6.6.0")
 	implementation("com.arangodb:arangodb-spring-data:3.2.3")
-	implementation("com.archesky.auth.library:archesky-auth-library:0.0.281083311-SNAPSHOT")
-	implementation("com.archesky.ssl.library:archesky-ssl-library:0.0.283041548-SNAPSHOT")
 	runtimeOnly("com.graphql-java-kickstart:altair-spring-boot-starter:7.1.0")
 	runtimeOnly("com.graphql-java-kickstart:graphiql-spring-boot-starter:7.1.0")
 	runtimeOnly("com.graphql-java-kickstart:voyager-spring-boot-starter:7.1.0")
@@ -80,7 +60,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/Rich43/archesky-content-server")
+			url = uri("https://maven.pkg.github.com/Rich43/archesky-chat-server")
 			credentials {
 				username = getenv().getOrDefault("GITHUB_ACTOR", "Rich43")
 				password = getenv()["GITHUB_TOKEN"]

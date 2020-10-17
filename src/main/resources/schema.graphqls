@@ -1,18 +1,18 @@
 type Query {
-    listContent: [Content!]!
+    listChat: [Chat!]!
 }
 
 type Mutation {
-    createContent(content: String!): Content!
-    updateContent(id: ID!, content: String!): Content
-    deleteContent(id: ID!): Boolean
+    createChat(chat: String!): Chat!
+    updateChat(id: ID!, chat: String!): Chat
+    deleteChat(id: ID!): Boolean
 }
 
 type Subscription {
-    updateContent(id: ID!): Content
+    updateChat(id: ID!): Chat
 }
 
-type Content {
+type Chat {
     id: ID!
-    content: String!
+    chat: String!
 }

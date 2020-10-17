@@ -1,4 +1,4 @@
-package com.archesky.content
+package com.archesky.chat
 
 import graphql.GraphQLError
 import graphql.kickstart.execution.error.GraphQLErrorHandler

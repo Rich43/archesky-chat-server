@@ -1,22 +1,22 @@
-package com.archesky.content.resolvers
+package com.archesky.chat.resolvers
 
-import com.archesky.content.dto.Content
-import com.archesky.content.service.MutationService
+import com.archesky.chat.dto.Chat
+import com.archesky.chat.service.MutationService
 import graphql.kickstart.tools.GraphQLMutationResolver
 import graphql.schema.DataFetchingEnvironment
 import org.springframework.stereotype.Component
 
 @Component
 class Mutation(private val mutationService: MutationService): GraphQLMutationResolver {
-    fun createContent(content: String, environment: DataFetchingEnvironment): Content {
-        return mutationService.createContent(content)
+    fun createChat(chat: String, environment: DataFetchingEnvironment): Chat {
+        return mutationService.createChat(chat)
     }
 
-    fun updateContent(id: String, content: String, environment: DataFetchingEnvironment): Content? {
-        return mutationService.updateContent(id, content)
+    fun updateChat(id: String, chat: String, environment: DataFetchingEnvironment): Chat? {
+        return mutationService.updateChat(id, chat)
     }
 
-    fun deleteContent(id: String, environment: DataFetchingEnvironment): Boolean {
-        return mutationService.deleteContent(id)
+    fun deleteChat(id: String, environment: DataFetchingEnvironment): Boolean {
+        return mutationService.deleteChat(id)
     }
 }

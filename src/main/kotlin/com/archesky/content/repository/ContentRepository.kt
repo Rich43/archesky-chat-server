@@ -1,20 +1,20 @@
-package com.archesky.content.repository
+package com.archesky.chat.repository
 
 import com.arangodb.springframework.annotation.Query
 import com.arangodb.springframework.repository.ArangoRepository;
-import com.archesky.content.dto.CONTENT
-import com.archesky.content.dto.Content
+import com.archesky.chat.dto.CONTENT
+import com.archesky.chat.dto.Chat
 import org.springframework.data.repository.query.Param
 
-interface ContentRepository : ArangoRepository<Content, String> {
-    @Query(value = "INSERT { content: @content } INTO $CONTENT RETURN NEW")
-    fun createContent(@Param("content") content: String): Content
+interface ChatRepository : ArangoRepository<Chat, String> {
+    @Query(value = "INSERT { chat: @chat } INTO $CONTENT RETURN NEW")
+    fun createChat(@Param("chat") chat: String): Chat
 
     @Query(value =
             "FOR c IN $CONTENT FILTER c._key == @key " +
-            "UPDATE { _key: c._key, content: @content } IN $CONTENT RETURN NEW"
+            "UPDATE { _key: c._key, chat: @chat } IN $CONTENT RETURN NEW"
     )
-    fun updateContentById(@Param("key") id: String, @Param("content") content: String): Content
+    fun updateChatById(@Param("key") id: String, @Param("chat") chat: String): Chat
 
-    fun deleteContentById(id: String)
+    fun deleteChatById(id: String)
 }

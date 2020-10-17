@@ -1,4 +1,4 @@
-package com.archesky.content.configuration
+package com.archesky.chat.configuration
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration

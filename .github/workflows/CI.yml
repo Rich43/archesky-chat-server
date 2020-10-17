@@ -53,13 +53,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: build/libs/archesky-content-server-0.0.${{ github.run_id }}-SNAPSHOT.jar
-          asset_name: archesky-content-server-0.0.${{ github.run_id }}-SNAPSHOT.jar
-          asset_content_type: application/java-archive
+          asset_path: build/libs/archesky-chat-server-0.0.${{ github.run_id }}-SNAPSHOT.jar
+          asset_name: archesky-chat-server-0.0.${{ github.run_id }}-SNAPSHOT.jar
+          asset_chat_type: application/java-archive
       - name: Build and Publish Docker image
         id: build_publish_docker_versioned
         uses: VaultVulp/gp-docker-action@1.1.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: archesky-content-server
+          image-name: archesky-chat-server
           image-tag: 0.0.${{ github.run_id }}-SNAPSHOT
