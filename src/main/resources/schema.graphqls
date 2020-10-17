@@ -13,5 +13,5 @@ type Subscription {
 type Message {
     id: ID!
     message: String!
-    date: String!
+    created: String!
 }
