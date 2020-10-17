@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param
 
 interface MessageRepository : ArangoRepository<Message, String> {
     @Query(value = "INSERT { message: @message } INTO $MESSAGE RETURN NEW")
-    fun createMessage(@Param("message") chat: String): Message
+    fun createMessage(@Param("message") message: String): Message
 }
