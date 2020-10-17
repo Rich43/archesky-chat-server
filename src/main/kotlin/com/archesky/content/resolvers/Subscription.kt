@@ -1,16 +1,16 @@
 package com.archesky.chat.resolvers
 
-import com.archesky.chat.dto.Chat
-import com.archesky.chat.service.ChatQueueService
+import com.archesky.chat.dto.Message
+import com.archesky.chat.service.MessageQueueService
 import graphql.kickstart.tools.GraphQLSubscriptionResolver
 import org.reactivestreams.Publisher
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux.from
 
 @Component
-class Subscription(private val chatQueueService: ChatQueueService) : GraphQLSubscriptionResolver {
-    fun updateChat(id: String): Publisher<Chat> {
-        return from(chatQueueService.getPublisher())
+class Subscription(private val messageQueueService: MessageQueueService) : GraphQLSubscriptionResolver {
+    fun updateMessage(id: String): Publisher<Message> {
+        return from(messageQueueService.getPublisher())
                 .filter { chat -> chat.id == id }
     }
 }

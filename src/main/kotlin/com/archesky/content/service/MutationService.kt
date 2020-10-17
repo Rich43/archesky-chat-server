@@ -1,22 +1,22 @@
 package com.archesky.chat.service
 
-import com.archesky.chat.dto.Chat
+import com.archesky.chat.dto.Message
 import com.archesky.chat.repository.ChatRepository
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 
 @Service
 class MutationService(private val repository: ChatRepository,
-                      private val chatQueueService: ChatQueueService) {
+                      private val messageQueueService: MessageQueueService) {
     @PreAuthorize("hasAuthority('archesky.create_chat')")
-    fun createChat(chat: String): Chat {
+    fun createChat(chat: String): Message {
         return repository.createChat(chat)
     }
 
     @PreAuthorize("hasAuthority('archesky.update_chat')")
-    fun updateChat(id: String, chat: String): Chat? {
+    fun updateChat(id: String, chat: String): Message? {
         val result = repository.updateChatById(id, chat)
-        chatQueueService.push(result)
+        messageQueueService.push(result)
         return result
     }
 

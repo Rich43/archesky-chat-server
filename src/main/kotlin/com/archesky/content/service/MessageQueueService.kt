@@ -1,6 +1,6 @@
 package com.archesky.chat.service
 
-import com.archesky.chat.dto.Chat
+import com.archesky.chat.dto.Message
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
@@ -9,24 +9,24 @@ import org.reactivestreams.Publisher
 import org.springframework.stereotype.Service
 
 @Service
-class ChatQueueService {
-    private val publisher: Publisher<Chat>
-    private var emitter: ObservableEmitter<Chat>? = null
+class MessageQueueService {
+    private val publisher: Publisher<Message>
+    private var emitter: ObservableEmitter<Message>? = null
 
     init {
-        val observable: Observable<Chat> = Observable.create {
+        val observable: Observable<Message> = Observable.create {
             emitter = it
         }
-        val connectableObservable: ConnectableObservable<Chat> = observable.share().publish()
+        val connectableObservable: ConnectableObservable<Message> = observable.share().publish()
         connectableObservable.connect()
         publisher = connectableObservable.toFlowable(BackpressureStrategy.BUFFER)
     }
 
-    fun push(chat: Chat) {
-        emitter!!.onNext(chat)
+    fun push(message: Message) {
+        emitter!!.onNext(message)
     }
 
-    fun getPublisher(): Publisher<Chat> {
+    fun getPublisher(): Publisher<Message> {
         return publisher
     }
 }
