@@ -7,5 +7,6 @@ const val MESSAGE = "message"
 @Document(MESSAGE)
 data class Message (
     @Id var id: String? = null,
-    var message: String? = null
+    var message: String? = null,
+    var created: String? = null
 )
