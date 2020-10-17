@@ -9,8 +9,7 @@ import reactor.core.publisher.Flux.from
 
 @Component
 class Subscription(private val messageQueueService: MessageQueueService) : GraphQLSubscriptionResolver {
-    fun updateMessage(id: String): Publisher<Message> {
+    fun updateMessage(): Publisher<Message> {
         return from(messageQueueService.getPublisher())
-                .filter { chat -> chat.id == id }
     }
 }

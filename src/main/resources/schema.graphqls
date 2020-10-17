@@ -1,18 +1,16 @@
 type Query {
-    listChat: [Chat!]!
+    listMessages: [Chat!]!
 }
 
 type Mutation {
-    createChat(chat: String!): Chat!
-    updateChat(id: ID!, chat: String!): Chat
-    deleteChat(id: ID!): Boolean
+    createChat(chat: String!): Message!
 }
 
 type Subscription {
-    updateChat(id: ID!): Chat
+    updateMessage(id: ID!): Message
 }
 
-type Chat {
+type Message {
     id: ID!
-    chat: String!
+    message: String!
 }
